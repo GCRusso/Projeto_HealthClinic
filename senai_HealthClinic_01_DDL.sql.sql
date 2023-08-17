@@ -15,7 +15,8 @@ CREATE TABLE Usuario
 	IdUsuario INT PRIMARY KEY IDENTITY,
 	IdTipoDeUsuario INT FOREIGN KEY REFERENCES TipoDeUsuario(IdTipoDeUsuario) NOT NULL,
 	Email VARCHAR(100) NOT NULL UNIQUE,
-	Senha VARCHAR(100) NOT NULL
+	Senha VARCHAR(100) NOT NULL,
+	Nome VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Clinica
@@ -42,7 +43,6 @@ CREATE TABLE Medico
 	IdClinica INT FOREIGN KEY REFERENCES Clinica(IdClinica) NOT NULL,
 	IdUsuario INT FOREIGN KEY REFERENCES Usuario(IdUsuario) NOT NULL,
 	CRM VARCHAR(8) NOT NULL UNIQUE,
-	NomeMedico VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Paciente
@@ -52,7 +52,6 @@ CREATE TABLE Paciente
 	DataNascimento DATE NOT NULL,
 	Sexo VARCHAR(20) NOT NULL,
 	CPF VARCHAR(11) NOT NULL UNIQUE,
-	NomePaciente VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Consulta
@@ -62,7 +61,7 @@ CREATE TABLE Consulta
 	IdPaciente INT FOREIGN KEY REFERENCES Paciente(IdPaciente) NOT NULL,
 	DataConsulta DATE NOT NULL,
 	HorarioConsulta TIME NOT NULL,
-	LocalConsulta VARCHAR(100) NOT NULL
+	Descricao VARCHAR(150) NOT NULL
 );
 
 CREATE TABLE ComentarioConsulta
@@ -72,5 +71,4 @@ CREATE TABLE ComentarioConsulta
 	Comentario VARCHAR(300) NOT NULL,
 	Situacao BIT DEFAULT(0)
 );
-
 
